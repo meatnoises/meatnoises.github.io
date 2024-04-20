@@ -1,1 +1,19 @@
-dziala?
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Data to NodeMCU</title>
+</head>
+<body>
+  <input type="text" id="dataInput" placeholder="Enter data to send"><br>
+  <button onclick="sendData()">Send Data</button>
+  <script>
+    function sendData() {
+      var data = document.getElementById("dataInput").value;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "http://192.168.1.91/sendData", true);  // Replace <nodeMCU_IP> with the actual IP address of your NodeMCU
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("data=" + data);
+    }
+  </script>
+</body>
+</html>
